@@ -9,7 +9,7 @@ function App() {
 
   const addTodo = (text: string) => {
     const newTodo: Todo = {
-      id: Date.now().toString(),
+      id: crypto.randomUUID(),
       text,
       completed: false,
     };
