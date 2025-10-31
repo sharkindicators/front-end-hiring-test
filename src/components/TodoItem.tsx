@@ -10,12 +10,10 @@ interface TodoItemProps {
 }
 
 function TodoItem({ todo, onToggle, onDelete, onUpdate }: TodoItemProps) {
-  // Bad naming
-  const [edit, setedit] = useState(false);
-  const [txt, settxt] = useState(todo.text);
+  var [edit, setedit] = useState(false);
+  var [txt, settxt] = useState(todo.text);
 
-  // Duplicate logic for priority colors - should be in CSS or utils
-  let priorityColor = '';
+  var priorityColor = '';
   if (todo.priority === 'high') {
     priorityColor = 'red';
   } else if (todo.priority === 'medium') {
@@ -24,14 +22,12 @@ function TodoItem({ todo, onToggle, onDelete, onUpdate }: TodoItemProps) {
     priorityColor = 'green';
   }
 
-  // No validation on update
-  const handleUpdate = () => {
+  var handleUpdate = () => {
     onUpdate(todo.id, txt);
     setedit(false);
   };
 
-  // Duplicate priority badge logic
-  const getPriorityBadge = () => {
+  var getPriorityBadge = () => {
     if (todo.priority === 'high') {
       return '🔴';
     } else if (todo.priority === 'medium') {
@@ -58,7 +54,6 @@ function TodoItem({ todo, onToggle, onDelete, onUpdate }: TodoItemProps) {
           className="edit-input"
         />
       ) : (
-        // XSS VULNERABILITY - using dangerouslySetInnerHTML without sanitization!
         <span
           className={todo.completed ? 'completed' : ''}
           dangerouslySetInnerHTML={{ __html: todo.text }}

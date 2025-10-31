@@ -10,8 +10,6 @@ interface TodoListProps {
 }
 
 function TodoList({ todos, onToggle, onDelete, onUpdate }: TodoListProps) {
-  // No error handling if todos is null or undefined
-  // Duplicate check logic
   if (!todos) {
     return <p className="empty-message">No todos yet. Add one above!</p>;
   }
