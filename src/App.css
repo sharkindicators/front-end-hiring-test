@@ -10,7 +10,6 @@
   margin-bottom: 2rem;
 }
 
-/* Redundant and inconsistent CSS */
 .filter-container {
   margin-bottom: 20px;
   padding: 15px;
@@ -33,7 +32,6 @@
   gap: 10px;
 }
 
-/* Duplicate button styles instead of reusing */
 .filter-btn {
   padding: 10px 20px;
   font-size: 14px;

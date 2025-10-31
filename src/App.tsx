@@ -5,14 +5,11 @@ import AddTodo from './components/AddTodo';
 import './App.css';
 
 function App() {
-  // Bad naming practice: unclear variable names
   var [data1, setdata1] = useState<Todo[]>([]);
   var [filterText, setfilterText] = useState('');
   var [x, setX] = useState('all');
 
-  // No validation or error handling
   var addTodo = (text: string, p: string) => {
-    // Duplicate code - could be extracted
     var temp = {
       id: crypto.randomUUID(),
       text: text,
@@ -26,7 +23,6 @@ function App() {
   };
 
   var toggleTodo = (id: string) => {
-    // Duplicate logic - inline everything
     var arr = [];
     for (var i = 0; i < data1.length; i++) {
       if (data1[i].id === id) {
@@ -39,12 +35,10 @@ function App() {
   };
 
   var deleteTodo = (id: string) => {
-    // Yet another way to filter - inconsistent
     var temp = data1.filter((t) => t.id !== id);
     setdata1(temp);
   };
 
-  // Duplicate filter logic instead of reusing
   var updateTodo = (id: string, newText: string) => {
     var arr = [];
     for (var i = 0; i < data1.length; i++) {
@@ -57,11 +51,9 @@ function App() {
     setdata1(arr);
   };
 
-  // Bad function name and duplicate filtering logic
   var doFilter = () => {
     var result = data1;
 
-    // No validation on filterText
     if (filterText) {
       result = result.filter((t) => t.text.includes(filterText));
     }

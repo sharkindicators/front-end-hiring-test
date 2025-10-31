@@ -6,14 +6,11 @@ interface AddTodoProps {
 }
 
 function AddTodo({ onAdd }: AddTodoProps) {
-  // Bad naming practices
   var [val, setval] = useState('');
   var [p, setp] = useState('medium');
 
-  // No validation - allows empty strings, XSS, etc.
   var handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // No validation at all!
     onAdd(val, p);
     setval('');
   };
