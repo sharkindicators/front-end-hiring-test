@@ -2,29 +2,42 @@ import { useState } from 'react';
 import './AddTodo.css';
 
 interface AddTodoProps {
-  onAdd: (text: string) => void;
+  onAdd: (text: string, priority: string) => void;
 }
 
 function AddTodo({ onAdd }: AddTodoProps) {
-  const [input, setInput] = useState('');
+  // Bad naming practices
+  const [val, setval] = useState('');
+  const [p, setp] = useState('medium');
 
+  // No validation - allows empty strings, XSS, etc.
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (input.trim()) {
-      onAdd(input.trim());
-      setInput('');
-    }
+    // No validation at all!
+    onAdd(val, p);
+    setval('');
   };
 
   return (
     <form className="add-todo" onSubmit={handleSubmit}>
       <input
         type="text"
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
+        value={val}
+        onChange={(e) => setval(e.target.value)}
         placeholder="Add a new todo..."
         className="todo-input"
       />
+
+      <select
+        value={p}
+        onChange={(e) => setp(e.target.value)}
+        className="priority-select"
+      >
+        <option value="low">Low</option>
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
+      </select>
+
       <button type="submit" className="add-button">
         Add
       </button>
