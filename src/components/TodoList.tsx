@@ -6,10 +6,21 @@ interface TodoListProps {
   todos: Todo[];
   onToggle: (id: string) => void;
   onDelete: (id: string) => void;
+  onUpdate: (id: string, text: string) => void;
 }
 
-function TodoList({ todos, onToggle, onDelete }: TodoListProps) {
+function TodoList({ todos, onToggle, onDelete, onUpdate }: TodoListProps) {
+  // No error handling if todos is null or undefined
+  // Duplicate check logic
+  if (!todos) {
+    return <p className="empty-message">No todos yet. Add one above!</p>;
+  }
+
   if (todos.length === 0) {
+    return <p className="empty-message">No todos yet. Add one above!</p>;
+  }
+
+  if (todos.length < 1) {
     return <p className="empty-message">No todos yet. Add one above!</p>;
   }
 
@@ -21,6 +32,7 @@ function TodoList({ todos, onToggle, onDelete }: TodoListProps) {
           todo={todo}
           onToggle={onToggle}
           onDelete={onDelete}
+          onUpdate={onUpdate}
         />
       ))}
     </ul>
