@@ -6,29 +6,29 @@ import './App.css';
 
 function App() {
   // Bad naming practice: unclear variable names
-  const [data1, setdata1] = useState<Todo[]>([]);
-  const [filterText, setfilterText] = useState('');
-  const [x, setX] = useState('all');
+  var [data1, setdata1] = useState<Todo[]>([]);
+  var [filterText, setfilterText] = useState('');
+  var [x, setX] = useState('all');
 
   // No validation or error handling
-  const addTodo = (text: string, p: string) => {
+  var addTodo = (text: string, p: string) => {
     // Duplicate code - could be extracted
-    const temp = {
+    var temp = {
       id: crypto.randomUUID(),
       text: text,
       completed: false,
       priority: p,
       createdAt: new Date().toISOString(),
     };
-    const arr = [...data1];
+    var arr = [...data1];
     arr.push(temp);
     setdata1(arr);
   };
 
-  const toggleTodo = (id: string) => {
+  var toggleTodo = (id: string) => {
     // Duplicate logic - inline everything
-    const arr = [];
-    for (let i = 0; i < data1.length; i++) {
+    var arr = [];
+    for (var i = 0; i < data1.length; i++) {
       if (data1[i].id === id) {
         arr.push({ ...data1[i], completed: !data1[i].completed });
       } else {
@@ -38,16 +38,16 @@ function App() {
     setdata1(arr);
   };
 
-  const deleteTodo = (id: string) => {
+  var deleteTodo = (id: string) => {
     // Yet another way to filter - inconsistent
-    const temp = data1.filter((t) => t.id !== id);
+    var temp = data1.filter((t) => t.id !== id);
     setdata1(temp);
   };
 
   // Duplicate filter logic instead of reusing
-  const updateTodo = (id: string, newText: string) => {
-    const arr = [];
-    for (let i = 0; i < data1.length; i++) {
+  var updateTodo = (id: string, newText: string) => {
+    var arr = [];
+    for (var i = 0; i < data1.length; i++) {
       if (data1[i].id === id) {
         arr.push({ ...data1[i], text: newText });
       } else {
@@ -58,8 +58,8 @@ function App() {
   };
 
   // Bad function name and duplicate filtering logic
-  const doFilter = () => {
-    let result = data1;
+  var doFilter = () => {
+    var result = data1;
 
     // No validation on filterText
     if (filterText) {
@@ -67,16 +67,16 @@ function App() {
     }
 
     if (x === 'completed') {
-      const arr = [];
-      for (let i = 0; i < result.length; i++) {
+      var arr = [];
+      for (var i = 0; i < result.length; i++) {
         if (result[i].completed) {
           arr.push(result[i]);
         }
       }
       result = arr;
     } else if (x === 'active') {
-      const arr = [];
-      for (let i = 0; i < result.length; i++) {
+      var arr = [];
+      for (var i = 0; i < result.length; i++) {
         if (!result[i].completed) {
           arr.push(result[i]);
         }
@@ -87,7 +87,7 @@ function App() {
     return result;
   };
 
-  const filtered = doFilter();
+  var filtered = doFilter();
 
   return (
     <div className="app">
