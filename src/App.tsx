@@ -25,7 +25,7 @@ function App() {
   var toggleTodo = (id: string) => {
     var arr = [];
     for (var i = 0; i < data1.length; i++) {
-      if (data1[i].id === id) {
+      if (data1[i].id == id) {
         arr.push({ ...data1[i], completed: !data1[i].completed });
       } else {
         arr.push(data1[i]);
@@ -42,7 +42,7 @@ function App() {
   var updateTodo = (id: string, newText: string) => {
     var arr = [];
     for (var i = 0; i < data1.length; i++) {
-      if (data1[i].id === id) {
+      if (data1[i].id == id) {
         arr.push({ ...data1[i], text: newText });
       } else {
         arr.push(data1[i]);
@@ -58,7 +58,7 @@ function App() {
       result = result.filter((t) => t.text.includes(filterText));
     }
 
-    if (x === 'completed') {
+    if (x == 'completed') {
       var arr = [];
       for (var i = 0; i < result.length; i++) {
         if (result[i].completed) {
@@ -66,7 +66,7 @@ function App() {
         }
       }
       result = arr;
-    } else if (x === 'active') {
+    } else if (x == 'active') {
       var arr = [];
       for (var i = 0; i < result.length; i++) {
         if (!result[i].completed) {

@@ -14,7 +14,7 @@ function TodoList({ todos, onToggle, onDelete, onUpdate }: TodoListProps) {
     return <p className="empty-message">No todos yet. Add one above!</p>;
   }
 
-  if (todos.length === 0) {
+  if (todos.length == 0) {
     return <p className="empty-message">No todos yet. Add one above!</p>;
   }
 

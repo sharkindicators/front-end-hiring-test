@@ -14,11 +14,11 @@ function TodoItem({ todo, onToggle, onDelete, onUpdate }: TodoItemProps) {
   var [txt, settxt] = useState(todo.text);
 
   var priorityColor = '';
-  if (todo.priority === 'high') {
+  if (todo.priority == 'high') {
     priorityColor = 'red';
-  } else if (todo.priority === 'medium') {
+  } else if (todo.priority == 'medium') {
     priorityColor = 'orange';
-  } else if (todo.priority === 'low') {
+  } else if (todo.priority == 'low') {
     priorityColor = 'green';
   }
 
@@ -28,9 +28,9 @@ function TodoItem({ todo, onToggle, onDelete, onUpdate }: TodoItemProps) {
   };
 
   var getPriorityBadge = () => {
-    if (todo.priority === 'high') {
+    if (todo.priority == 'high') {
       return '🔴';
-    } else if (todo.priority === 'medium') {
+    } else if (todo.priority == 'medium') {
       return '🟡';
     } else {
       return '🟢';
